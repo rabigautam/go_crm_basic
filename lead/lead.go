@@ -26,3 +26,9 @@ func NewLead(c *fiber.Ctx) {
 	db.Create(&lead)
 	c.JSON(lead)
 }
+func GetLeads(c *fiber.Ctx) {
+	var lead []Lead
+	db := database.DBconn
+	db.Find(&lead)
+	c.JSON(lead)
+}
