@@ -32,3 +32,21 @@ func GetLeads(c *fiber.Ctx) {
 	db.Find(&lead)
 	c.JSON(lead)
 }
+
+func GetLead(c *fiber.Ctx) {
+	id := c.Params("id")
+	db := database.DBconn
+	var lead Lead
+
+	db.Find(&lead, id)
+	c.JSON(lead)
+}
+
+func DeleteLead(c *fiber.Ctx) {
+	id := c.Params("id")
+	db := database.DBconn
+	var lead Lead
+	db.Delete(&lead, id)
+	c.JSON(lead)
+
+}
